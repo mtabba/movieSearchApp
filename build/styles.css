@@ -60,7 +60,7 @@ body {
         /* border: 1px solid white; */
         .titleStyle{
             width: inherit;
-            font-size: 1.2rem;
+            font-size:  4 vw;
         }
         .imgStyle{
             img{
@@ -81,9 +81,14 @@ body {
 
     }
     .movieCard{
-        /* height: 35vh;
-        width: 30vh; */
+        height: auto !important;
+        width: 80vw !important;
     }
+    .imgStyle{
+        img{
+            width: 80vw !important;
+            height: auto !important;
+        }
     #searchBtn{
         /* height: 11vh;
         width: 15vh;
