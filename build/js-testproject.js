@@ -14,7 +14,7 @@ document.getElementById("searchBtn").addEventListener('click', function() {
     data= JSON.parse(data)
     data.length==0 ? document.getElementById("appendHere").innerHTML="No Movie Found" :document.getElementById("appendHere").innerHTML="";
     for(let i=0; i<data.length; i++){
-      appendHTML( data[i].poster_path,data[i].title)
+      appendHTML( data[i].poster_path,data[i].title, data[i].release_date)
       // console.log(data.recordings[i].title)
     }
   }
@@ -27,7 +27,7 @@ document.getElementById("searchBtn").addEventListener('click', function() {
       // localStorage.setItem("movieName", searchTerm)
       localStorage.setItem(searchTerm, JSON.stringify(data.results))
       for(let i=0; i<data.results.length; i++){
-        appendHTML( data.results[i].poster_path,data.results[i].title)
+        appendHTML( data.results[i].poster_path,data.results[i].title,data.results[i].release_date)
         // console.log(data.recordings[i].title)
       }
     })
@@ -52,9 +52,10 @@ function clear() {
 
 
 
-function appendHTML(poster,mvTitle){
+function appendHTML(poster,mvTitle,year){
   const appendHere = document.getElementById('appendHere');
   const newDiv = document.createElement('div');
+  newDiv.className="movieCard"
   newDiv.className="movieCard"
   newDiv.innerHTML =  
   `
@@ -62,10 +63,12 @@ function appendHTML(poster,mvTitle){
   <img src="https://image.tmdb.org/t/p/original${poster}" alt="">
   </div>
   <br>
+  <div class="yearStyle">
+  ${year}
+  </div>
   <div class="titleStyle">
   ${mvTitle}
   </div>
-
   `;
   appendHere.append(newDiv);
 }

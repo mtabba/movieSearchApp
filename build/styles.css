@@ -1,42 +1,46 @@
 /* FF0022 FDFFFC 41EAD4 B91372 */
 body {
     color: rgb(243, 239, 239);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI';
     background-color: rgb(0, 2, 19);
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .pg1-container{
     height: 100vh;
     background-size: cover;
     background-image: url("../assets/bg-image.jpg");
     opacity: 0.3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     z-index: -1;
     position: relative;
 }
 .pg1-overlay{
+    flex-direction: column;
+    display: flex;
+    gap: 2vh;
+    align-items: center;
     position: absolute;
     top: 40vh;
-    left: 20vw;
+    align-self: center;
     h1{
-        font-size: 3rem;
+        font-size: 4vw;
     }
     #mvname {
-        height: 10vh;
+        height: auto;
         width: 40vw;
-        font-size: 2rem;
+        font-size: 3vw;
         border-radius: 1vh;
     }
     #searchBtn{
+        font-family: sans-serif;
         background-color: #e0001e;
         color: rgb(243, 239, 239);
-        height: 11vh;
-        width: 15vw;
-        font-size: 1.5rem;
+        /* height: auto; */
+        width: 25vw;
+        font-size: 3vw;
         border-radius: 1vh;
     }
 
@@ -48,12 +52,14 @@ body {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 10vw;
+    gap: 8vw;
     .movieCard{
-        height: 75vh;
-        width: 20vw;
+        height: auto;
+        width: 25vw;
+        align-self: flex-start;
         /* border: 1px solid white; */
         .titleStyle{
+            width: inherit;
             font-size: 1.2rem;
         }
         .imgStyle{
@@ -66,3 +72,23 @@ body {
     }
 }
 
+
+/* -------------------------------Media Querries-------------- */
+@media screen and (max-width: 780px){
+    .pg2-container{
+        align-content: center;
+        flex-direction: column;
+
+    }
+    .movieCard{
+        /* height: 35vh;
+        width: 30vh; */
+    }
+    #searchBtn{
+        /* height: 11vh;
+        width: 15vh;
+        font-size: 1 rem; */
+    }
+
+    
+}
