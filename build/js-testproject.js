@@ -1,25 +1,42 @@
 
-// let movieName =""; 
-// let movieQuantity = 9;
+const apiKey = "4aeff827ceeeb2ab2e0b87dbe7c509da";
 
 
 document.getElementById("searchBtn").addEventListener('click', function() {
   clear();
-  let searchTerm = document.getElementById("mvname").value;
-  searchTerm=searchTerm.replace(" ","+")
-  console.log(searchTerm)
-    fetch("https://api.themoviedb.org/3/search/movie?query="+`${searchTerm}`+ "&api_key=4aeff827ceeeb2ab2e0b87dbe7c509da")
-  .then(response => response.json())
-  .then(data=> {      
-    // console.log(data.results) 
-      for(let i=0; i<data.results.length; i++){
-      appendHTML( data.results[i].poster_path,data.results[i].title)
+  let searchTerm = document.getElementById("mvname").value.toLowerCase();
+  if(searchTerm==""){return}
+  searchTerm=searchTerm.replaceAll(" ","+",)
+
+  let data = localStorage.getItem(searchTerm);
+  if(data){
+    console.log("Is in local storage")
+    data= JSON.parse(data)
+    data.length==0 ? document.getElementById("appendHere").innerHTML="No Movie Found" :document.getElementById("appendHere").innerHTML="";
+    for(let i=0; i<data.length; i++){
+      appendHTML( data[i].poster_path,data[i].title)
       // console.log(data.recordings[i].title)
+    }
+  }
+  else{
+    console.log("Not in Local Storage")
+    fetch(`https://api.themoviedb.org/3/search/movie?query=${searchTerm}&api_key=${apiKey}`)
+    .then(response => response.json())
+    .then(data=> {
+      // console.log(data.results)
+      // localStorage.setItem("movieName", searchTerm)
+      localStorage.setItem(searchTerm, JSON.stringify(data.results))
+      for(let i=0; i<data.results.length; i++){
+        appendHTML( data.results[i].poster_path,data.results[i].title)
+        // console.log(data.recordings[i].title)
       }
     })
-  .catch(error => console.log("error"))
-
-  console.log(searchTerm);
+    .catch(error => {
+      console.log("error")
+      document.getElementById("appendHere").innerHTML="No Movie Found"
+    })
+    console.log(searchTerm);
+  }
 });
   
 document.getElementById("mvname").addEventListener('keydown', function(event) {
@@ -46,7 +63,7 @@ function appendHTML(poster,mvTitle){
   </div>
   <br>
   <div class="titleStyle">
-  Title:  ${mvTitle}
+  ${mvTitle}
   </div>
 
   `;

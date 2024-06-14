@@ -52,14 +52,15 @@ body {
     .movieCard{
         height: 75vh;
         width: 20vw;
-        border: 1px solid white;
+        /* border: 1px solid white; */
         .titleStyle{
-            font-size: 1.5rem;
+            font-size: 1.2rem;
         }
         .imgStyle{
             img{
+                border-radius: 1vh;
                 width: 20vw;
-                height: 60vh;
+                height: 55vh;
             }
         }
     }
