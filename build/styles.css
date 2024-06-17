@@ -1,10 +1,11 @@
-/* FF0022 FDFFFC 41EAD4 B91372 */
+
 body {
     color: rgb(243, 239, 239);
     font-family: "Netflix Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     background-color: rgb(0, 2, 19);
     margin: 0;
     padding: 0;
+    /* position: relative; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -17,6 +18,7 @@ body {
     z-index: -1;
     position: relative;
 }
+
 .pg1-overlay{
     flex-direction: column;
     display: flex;
@@ -79,10 +81,55 @@ body {
     }
 }
 
+/* ------------------------------New Html Css -------------------- */
+.pg1-newhtml{
+    height: auto;
+    /* background-image: linear-gradient(rgb(0, 2, 19),rgb(5, 7, 32)); */
+    /* position: relative; */
+}
+.movieDetail{
+    padding: 10vh 5vw 10vh 5vw;
+}
+.mainDivNewhtml{
+    display:flex;
+    gap: 5vw;
+}
+.imgStyleNewhtml{
+    img{
+        height: 85vh;
+    }
+}
+.movieplotNewhtml{
+    display: flex;
+    flex-direction: column;
+    
+    .titleMovie{
+        font: bold;
+    }
+    .ratingMovie{
+        display: flex;
+        max-width: 30vw;
+        justify-content: space-between;
+    }
+    .overviewMovie{
+        /* font-family:; */
+    }
+}
+/* footer{
+    position: absolute;
+    bottom: 0;
+} */
 
 /* -------------------------------Media Querries-------------- */
-/* @media screen and (max-width: 780px){
-    .pg2-container{
+ @media screen and (max-width: 480px){
+    .mainDivNewhtml{
+        flex-direction: column;
+    }
+    .ratingMovie{
+        max-width: 60vw;
+    }
+ }
+/*    .pg2-container{
         align-content: center;
         flex-direction: column;
 
