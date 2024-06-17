@@ -66,9 +66,9 @@ function appendHTML(poster,mvTitle,year){
   <div class="yearStyle">
   ${year}
   </div>
-  <div class="titleStyle">
+  <h3 class="titleStyle">
   ${mvTitle}
-  </div>
+  </h3>
   `;
   appendHere.append(newDiv);
 }
