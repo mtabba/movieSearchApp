@@ -64,7 +64,7 @@ function clicked(id){
   data= JSON.parse(data)
   localStorage.setItem('movieClicked', JSON.stringify(data[id]))
   
-  window.location.href= "https://mtabba.github.io/movieSearchApp/movieCard.html"  
+  window.location.href= "movieCard.html"  
 }
 
 //------------- Function to pass append movie card divs ---------------------
