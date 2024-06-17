@@ -96,7 +96,8 @@ body {
 }
 .imgStyleNewhtml{
     img{
-        height: 85vh;
+        height: auto;
+        width: 90vw;
     }
 }
 .movieplotNewhtml{

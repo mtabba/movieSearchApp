@@ -35,7 +35,7 @@ function appendHTML2(poster,title,rating,popularity,overview,cast){
                 <h4>Cast: ${cast}</h4> 
             </div>
             <div class="backMain">
-                <a href="../index.html">Back to main</a>
+                <a href="index.html">Back to main</a>
             </div>
         </div>
     </div>
