@@ -43,7 +43,7 @@ function appendHTML2(poster,title,rating,popularity,overview,cast){
                 <h4>Popularity: ${popularity}</h4> 
             </div>
             <div class="overviewMovie">
-                <h4>Plot:</h4>
+                <h4>PLot:</h4>
                 <p>${overview}</p>
             </div>
             <div id="castMovie">
@@ -71,12 +71,12 @@ function getCast(movieId) {
         console.log(data);
         const currentCard = document.getElementById('castMovie');
         const cast = data.cast;
-        const castContainer = document.createElement("div");
+        const castContainer = document.createElement("ul");
 
         cast.forEach((actor) => {
           const name = actor.name;
           const character = actor.character;
-          const actorInfo = document.createElement("h5");
+          const actorInfo = document.createElement("li");
           actorInfo.textContent = `${name} as=> ${character}`;
           castContainer.appendChild(actorInfo);
         });

@@ -85,6 +85,13 @@ body {
                 height: 55vh;
             }
         }
+
+        .yearStyle{
+            width: max-content;
+            span{
+                font-weight: 600;
+            }
+        }
     }
 }
 
@@ -130,7 +137,14 @@ footer{
 
     align-items: center;
 }
-
+/* #castMovie{
+    li{
+        display: none;
+    }
+    li:nth-child(-n+4) {
+        display: block;
+    }    
+} */
 /* -------------------------------Media Querries-------------- */
  @media screen and (max-width: 480px){
     .mainDivNewhtml{

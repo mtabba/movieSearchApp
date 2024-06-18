@@ -78,6 +78,7 @@ function clicked(id){
 function appendHTML1(poster,mvTitle,year,id){
   const appendHere = document.getElementById('appendHere');
   const newDiv = document.createElement('div');
+  const formattedDate = new Date(year).toLocaleDateString()
   newDiv.className="movieCard"
   newDiv.innerHTML =  
   `
@@ -86,7 +87,7 @@ function appendHTML1(poster,mvTitle,year,id){
   </div>
   <br>
   <div class="yearStyle">
-  ${year}
+   <span>Release Date:</span> ${formattedDate}
   </div>
   <h3 class="titleStyle">
   ${mvTitle}
