@@ -104,7 +104,7 @@ body {
 .imgStyleNewhtml{
     img{
         height: auto;
-        width: 90vw;
+        width: 30vw;
     }
 }
 .movieplotNewhtml{
@@ -116,8 +116,9 @@ body {
     }
     .ratingMovie{
         display: flex;
-        max-width: 30vw;
-        justify-content: space-between;
+        gap: 10vw;
+        /* max-width: 30vw; */
+        /* justify-content: space-between; */
     }
     .overviewMovie{
         /* font-family:; */
@@ -137,6 +138,11 @@ footer{
     }
     .ratingMovie{
         max-width: 60vw;
+    }
+    .imgStyleNewhtml{
+        img{
+            width: 90vw;
+        }
     }
  }
 /*    .pg2-container{

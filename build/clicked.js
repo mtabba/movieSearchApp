@@ -1,11 +1,25 @@
+const apiKey = "4aeff827ceeeb2ab2e0b87dbe7c509da";
 
 let data = localStorage.getItem("movieClicked");
+let castData;
 // if(data==""){return}
 if(data){
     data= JSON.parse(data)
     console.log(data.poster_path, data.title,data.vote_average,data.popularity, data.overview)
-    appendHTML2( data.poster_path, data.title,data.vote_average,data.popularity,data.overview)
+    // const castUrl = `https://api.themoviedb.org/3/movie/${data.id}/credits?api_key=${apiKey}`;
+    // fetch(castUrl)
+    // .then((response) => response.json())
+    // .then((dataCast) => {
+    //     console.log(dataCast.cast);
+    //     castData = JSON.parse(dataCast.cast);
+    // })
+    // .catch((error)=>{
+    //     console.log("error: ", error )
+    // })
+
+    appendHTML2( data.poster_path, data.title,data.vote_average,data.popularity,data.overview,castData)
 }
+
 
 
 //--------------- Clickable Movie card directed towards new html file-----------------
@@ -31,8 +45,8 @@ function appendHTML2(poster,title,rating,popularity,overview,cast){
             <div class="overviewMovie">
                 <p>${overview}</p>
             </div>
-            <div class="castMovie">
-                <h4>Cast: ${cast}</h4> 
+            <div id="castMovie">
+                <h4>Cast:</h4>
             </div>
             <div class="backMain">
                 <a href="index.html">Back to main</a>
@@ -42,4 +56,34 @@ function appendHTML2(poster,title,rating,popularity,overview,cast){
     <br>
     `;
     appendHere.append(newDiv);
+  }
+
+//   Call function of Cast_--------
+getCast(data.id);
+
+//   --------------------Cast Get Function----------------------
+function getCast(movieId) {
+     const castUrl = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`;
+    fetch(castUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        const currentCard = document.getElementById('castMovie');
+        const cast = data.cast;
+        const castContainer = document.createElement("div");
+
+        cast.forEach((actor) => {
+          const name = actor.name;
+          const character = actor.character;
+          const actorInfo = document.createElement("h5");
+          actorInfo.textContent = `${name} as=> ${character}`;
+          castContainer.appendChild(actorInfo);
+        });
+
+        // Append the cast container to the card or any desired HTML element
+        currentCard.appendChild(castContainer);
+      })
+      .catch((error) => {
+        console.log("Error:", error);
+      });
   }
