@@ -19,8 +19,11 @@ document.getElementById("searchBtn").addEventListener('click', function() {
     for(let i=0; i<data.length; i++){
       appendHTML1
     ( data[i].poster_path,data[i].title, data[i].release_date,i)
-
     }
+    window.scrollTo({
+    top: 580,
+    behavior: "smooth",  
+    })
   }
 // -------------- Else Search from api ------------------------------------------------
   else{
@@ -33,12 +36,16 @@ document.getElementById("searchBtn").addEventListener('click', function() {
         appendHTML1
         (data.results[i].poster_path,data.results[i].title,data.results[i].release_date,i)
       }
+      console.log(searchTerm);
+      window.scrollTo({
+        top: 580,
+        behavior: "smooth",  
+        })
     })
     .catch(error => {
       console.log("error")
       document.getElementById("appendHere").innerHTML="No Movie Found"
     })
-    console.log(searchTerm);
   }
 });
   
