@@ -43,6 +43,7 @@ function appendHTML2(poster,title,rating,popularity,overview,cast){
                 <h4>Popularity: ${popularity}</h4> 
             </div>
             <div class="overviewMovie">
+                <h4>Plot:</h4>
                 <p>${overview}</p>
             </div>
             <div id="castMovie">
