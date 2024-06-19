@@ -83,7 +83,7 @@ function getCast(movieId) {
           const name = actor.name;
           const character = actor.character;
           const actorInfo = document.createElement("li");
-          actorInfo.textContent = `${name} as=> ${character}`;
+          actorInfo.textContent = `${name} as ${character}`;
           castContainer.appendChild(actorInfo);
         });
 
