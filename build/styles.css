@@ -22,6 +22,12 @@ body {
     gap: 30vh;
     align-items: center;
     box-shadow: inset 0 0 100px 70px #000;
+    #top img{
+        inline-size: 13vw;
+        position: absolute;
+        left: 2vw;
+        top: 4vh;
+    }
 }
 
 .pg1-overlay{
@@ -157,6 +163,12 @@ footer{
         img{
             width: 90vw;
         }
+    }
+    #top img{
+        inline-size: 35vw !important;
+        position: absolute !important;
+        left: 30vw !important;
+        top: 10vh !important;
     }
  }
 /*    .pg2-container{
