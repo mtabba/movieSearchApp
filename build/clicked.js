@@ -24,7 +24,7 @@ if(data){
 
 //--------------- Clickable Movie card directed towards new html file-----------------
 
-function appendHTML2(poster,title,rating,popularity,overview,cast){
+function appendHTML2(poster,title,rating,popularity,overview){
     const appendHere = document.getElementById('pg1-newhtml-item1');
     const newDiv = document.createElement('div');
     newDiv.className="movieDetail"
@@ -43,14 +43,14 @@ function appendHTML2(poster,title,rating,popularity,overview,cast){
                 <h4>Popularity: ${popularity}</h4> 
             </div>
             <div class="overviewMovie">
-                <h4>PLot:</h4>
+                <h4>Plot:</h4>
                 <p>${overview}</p>
             </div>
             <div id="castMovie">
                 <h4>Cast:</h4>
             </div>
             <div class="backMain">
-                <a href="index.html">Back to main</a>
+            <a href="index.html">Back to main</a>
             </div>
         </div>
     </div>
@@ -62,6 +62,12 @@ function appendHTML2(poster,title,rating,popularity,overview,cast){
 //   Call function of Cast_--------
 getCast(data.id);
 
+
+// -----------------------Show More Function------------
+
+function showMore(){
+document.getElementById("castMovie").style.display="block"
+}
 //   --------------------Cast Get Function----------------------
 function getCast(movieId) {
      const castUrl = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`;
