@@ -13,7 +13,7 @@ document.getElementById("searchBtn").addEventListener('click', function() {
   let data = localStorage.getItem(searchTerm);
 //-------------- If available in local storage -----------------------------------
   if(data){
-    console.log("Is in local storage")
+    // console.log("Is in local storage")
     data= JSON.parse(data)
     data.length==0 ? document.getElementById("appendHere").innerHTML="No Movie Found" :document.getElementById("appendHere").innerHTML="";
     for(let i=0; i<data.length; i++){
@@ -27,7 +27,7 @@ document.getElementById("searchBtn").addEventListener('click', function() {
   }
 // -------------- Else Search from api ------------------------------------------------
   else{
-    console.log("Not in Local Storage")
+    // console.log("Not in Local Storage")
     fetch(`https://api.themoviedb.org/3/search/movie?query=${searchTerm}&api_key=${apiKey}`)
     .then(response => response.json())
     .then(data=> {
@@ -36,14 +36,14 @@ document.getElementById("searchBtn").addEventListener('click', function() {
         appendHTML1
         (data.results[i].poster_path,data.results[i].title,data.results[i].release_date,i)
       }
-      console.log(searchTerm);
+      // console.log(searchTerm);
       window.scrollTo({
         top: 580,
         behavior: "smooth",  
         })
     })
     .catch(error => {
-      console.log("error")
+      console.log("error", error)
       document.getElementById("appendHere").innerHTML="No Movie Found"
     })
   }

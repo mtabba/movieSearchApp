@@ -1,26 +1,35 @@
 const apiKey = "4aeff827ceeeb2ab2e0b87dbe7c509da";
-
 let data = localStorage.getItem("movieClicked");
-let castData;
-// if(data==""){return}
-if(data){
-    data= JSON.parse(data)
-    console.log(data.poster_path, data.title,data.vote_average,data.popularity, data.overview)
-    // const castUrl = `https://api.themoviedb.org/3/movie/${data.id}/credits?api_key=${apiKey}`;
-    // fetch(castUrl)
-    // .then((response) => response.json())
-    // .then((dataCast) => {
-    //     console.log(dataCast.cast);
-    //     castData = JSON.parse(dataCast.cast);
-    // })
-    // .catch((error)=>{
-    //     console.log("error: ", error )
-    // })
+data= JSON.parse(data)
+let movieId = data.id;
+const castUrl = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`;
 
-    appendHTML2( data.poster_path, data.title,data.vote_average,data.popularity,data.overview,castData)
+let castData =[];
+
+if(data){
+  appendHTML2( data.poster_path, data.title,data.vote_average,data.popularity,data.overview)
+  fetch(castUrl)
+  .then(response => response.json())
+  .then(dataCast => {
+      // console.log(dataCast);
+      for (let i= 0; i<dataCast.cast.length; i++ ){
+        appendcast(dataCast.cast[i].name,dataCast.cast[i].character );          
+      }
+  })
+  .catch(error=>{
+      console.log("error: ", error )
+  })
 }
 
-
+// ---------------Show Hide Button----------
+let x=false ;
+document.getElementById("show").addEventListener("click", function() {
+  const movieCastListItems = document.querySelectorAll('#movieCastName');
+  for(let i=15;i<movieCastListItems.length;i++){
+    x==false? movieCastListItems[i].style.display= "block" : movieCastListItems[i].style.display= "none"
+  }
+  x=!x;
+})
 
 //--------------- Clickable Movie card directed towards new html file-----------------
 
@@ -49,6 +58,10 @@ function appendHTML2(poster,title,rating,popularity,overview){
             <div id="castMovie">
                 <h4>Cast:</h4>
             </div>
+            <div class="showMore">
+            <button id="show">Show/Hide</button>
+            </div>
+            <br>
             <div class="backMain">
             <a href="index.html">Back to main</a>
             </div>
@@ -59,38 +72,24 @@ function appendHTML2(poster,title,rating,popularity,overview){
     appendHere.append(newDiv);
   }
 
-//   Call function of Cast_--------
-getCast(data.id);
+
+// ---------------------Movie Cast Append Html Function-----------------------
+
+function appendcast(cast,character){
+  const castdiv = document.getElementById('castMovie');
+  const newDiv = document.createElement('p');
+  newDiv.id="movieCastName"
+  newDiv.innerHTML =  
+  `
+    ${cast}  as  ${character} 
+  `;
+  castdiv.appendChild(newDiv);
+}
+
 
 
 // -----------------------Show More Function------------
 
-function showMore(){
-document.getElementById("castMovie").style.display="block"
-}
-//   --------------------Cast Get Function----------------------
-function getCast(movieId) {
-     const castUrl = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`;
-    fetch(castUrl)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        const currentCard = document.getElementById('castMovie');
-        const cast = data.cast;
-        const castContainer = document.createElement("ul");
-
-        cast.forEach((actor) => {
-          const name = actor.name;
-          const character = actor.character;
-          const actorInfo = document.createElement("li");
-          actorInfo.textContent = `${name} as ${character}`;
-          castContainer.appendChild(actorInfo);
-        });
-
-        // Append the cast container to the card or any desired HTML element
-        currentCard.appendChild(castContainer);
-      })
-      .catch((error) => {
-        console.log("Error:", error);
-      });
-  }
+// function showMore(){
+// document.getElementById("castMovie").style.display="block"
+// }
