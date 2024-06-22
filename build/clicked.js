@@ -25,7 +25,7 @@ if(data){
 let x=false ;
 document.getElementById("show").addEventListener("click", function() {
   const movieCastListItems = document.querySelectorAll('#movieCastName');
-  for(let i=12;i<movieCastListItems.length;i++){
+  for(let i=7;i<movieCastListItems.length;i++){
     x==false? movieCastListItems[i].style.display= "block" : movieCastListItems[i].style.display= "none"
   }
   x=!x;

@@ -147,11 +147,11 @@ footer{
 }
 #castMovie{
     #movieCastName{
-        line-height: 1vh;
+        /* line-height: 1vh; */
         display: none;
     }
-    #movieCastName:nth-child(-n+12) {
-        line-height: 1vh;
+    #movieCastName:nth-child(-n+7) {
+        /* line-height: 1vh; */
         display: block;
     }    
 }
