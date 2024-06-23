@@ -85,11 +85,3 @@ function appendcast(cast,character){
   `;
   castdiv.appendChild(newDiv);
 }
-
-
-
-// -----------------------Show More Function------------
-
-// function showMore(){
-// document.getElementById("castMovie").style.display="block"
-// }

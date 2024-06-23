@@ -1,15 +1,14 @@
 
 // ------------- Global Variables & Constants ------------------------------------
 const apiKey = "4aeff827ceeeb2ab2e0b87dbe7c509da";
-
+let searchTerm='';
 
 //------------ Search button event and fetch api function--------------------------
 document.getElementById("searchBtn").addEventListener('click', function() {
-  clear();
-  let searchTerm = document.getElementById("mvname").value.toLowerCase();
+  clear(); // to clear input if previously searched. 
+  searchTerm = document.getElementById("mvname").value.toLowerCase();
   if(searchTerm==""){return}
   searchTerm=searchTerm.replaceAll(" ","+",)
-
   let data = localStorage.getItem(searchTerm);
 //-------------- If available in local storage -----------------------------------
   if(data){
@@ -62,11 +61,8 @@ document.getElementById("mvname").addEventListener('keydown', function(event) {
 function clear() {
   document.getElementById("appendHere").innerHTML = "";
 }
-
+//--------------- Navigate to New Page-------------------------------- 
 function clicked(id){
-  let searchTerm = document.getElementById("mvname").value.toLowerCase();
-  if(searchTerm==""){return}
-  searchTerm=searchTerm.replaceAll(" ","+",)
   let data = localStorage.getItem(searchTerm);
   data= JSON.parse(data)
   localStorage.setItem('movieClicked', JSON.stringify(data[id]))
