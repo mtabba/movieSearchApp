@@ -14,7 +14,11 @@ document.getElementById("searchBtn").addEventListener('click', function() {
   if(data){
     // console.log("Is in local storage")
     data= JSON.parse(data)
-    data.length==0 ? document.getElementById("appendHere").innerHTML="No Movie Found" :document.getElementById("appendHere").innerHTML="";
+    if(data.length == 0 ){
+      alert("No Movie Found");
+      document.getElementById("appendHere").innerHTML="No Movie Found";
+    }
+    // data.length==0 ?  :document.getElementById("appendHere").innerHTML="";
     for(let i=0; i<data.length; i++){
       appendHTML1
     ( data[i].poster_path,data[i].title, data[i].release_date,i)
@@ -23,6 +27,12 @@ document.getElementById("searchBtn").addEventListener('click', function() {
     top: 580,
     behavior: "smooth",  
     })
+//---------------- Replacing the Null image png if image not available -----------
+    let images = document.querySelectorAll('img');
+    for (let i=1; i<images.length; i++){
+      replaceEmptySrc(images[i]);
+    }
+
   }
 // -------------- Else Search from api ------------------------------------------------
   else{
@@ -31,20 +41,33 @@ document.getElementById("searchBtn").addEventListener('click', function() {
     .then(response => response.json())
     .then(data=> {
       localStorage.setItem(searchTerm, JSON.stringify(data.results))
+      if(data.results.length != 0){
       for(let i=0; i<data.results.length; i++){
         appendHTML1
         (data.results[i].poster_path,data.results[i].title,data.results[i].release_date,i)
+//------------ Replacing the Null image png if image not available ------------------------------- 
+        let images = document.querySelectorAll('img');
+        for (let i=1; i<images.length; i++){
+          replaceEmptySrc(images[i]);
+        }
       }
       // console.log(searchTerm);
       window.scrollTo({
         top: 580,
         behavior: "smooth",  
         })
+      }
+      else{
+        alert("No Movie Found");
+        document.getElementById("appendHere").innerHTML="No Movie Found"; 
+      }
+
     })
     .catch(error => {
       console.log("error", error)
       document.getElementById("appendHere").innerHTML="No Movie Found"
     })
+
   }
 });
   
@@ -79,7 +102,7 @@ function appendHTML1(poster,mvTitle,year,id){
   newDiv.innerHTML =  
   `
   <div class="imgStyle">
-  <img src="https://image.tmdb.org/t/p/original${poster}" alt="" onclick="clicked(${id})">
+  <img src="https://image.tmdb.org/t/p/original${poster}" alt="Image Not Found"  onclick="clicked(${id})">
   </div>
   <br>
   <div class="yearStyle">
@@ -90,5 +113,13 @@ function appendHTML1(poster,mvTitle,year,id){
   </h3>
   `;
   appendHere.append(newDiv);
+}
+
+//--------------  Function to add null image -----------------------------
+function replaceEmptySrc(image) {
+  if (image.getAttribute('src') === 'https://image.tmdb.org/t/p/originalnull') {
+     image.src = '../assets/not-available.png';
+     image.className= 'nullImage'
+  }
 }
 
