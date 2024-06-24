@@ -29,7 +29,7 @@ document.getElementById("searchBtn").addEventListener('click', function() {
     })
 //---------------- Replacing the Null image png if image not available -----------
     let images = document.querySelectorAll('img');
-    for (let i=1; i<images.length; i++){
+    for (let i=0; i<images.length; i++){
       replaceEmptySrc(images[i]);
     }
 
@@ -47,7 +47,7 @@ document.getElementById("searchBtn").addEventListener('click', function() {
         (data.results[i].poster_path,data.results[i].title,data.results[i].release_date,i)
 //------------ Replacing the Null image png if image not available ------------------------------- 
         let images = document.querySelectorAll('img');
-        for (let i=1; i<images.length; i++){
+        for (let i=0; i<images.length; i++){
           replaceEmptySrc(images[i]);
         }
       }
