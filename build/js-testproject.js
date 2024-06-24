@@ -118,7 +118,7 @@ function appendHTML1(poster,mvTitle,year,id){
 //--------------  Function to add null image -----------------------------
 function replaceEmptySrc(image) {
   if (image.getAttribute('src') === 'https://image.tmdb.org/t/p/originalnull') {
-     image.src = '../assets/not-available.png';
+     image.src = './assets/not-available.png';
      image.className= 'nullImage'
   }
 }
