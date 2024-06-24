@@ -10,7 +10,7 @@ if(data){
   appendHTML2( data.poster_path, data.title,data.vote_average,data.popularity,data.overview)
   let images = document.querySelectorAll('img');
   for (let i=0; i<images.length; i++){
-    replaceEmptySrc(images[0]);
+    replaceEmptySrc(images[i]);
   }
   fetch(castUrl)
   .then(response => response.json())
