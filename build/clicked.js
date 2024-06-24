@@ -15,6 +15,10 @@ if(data){
       for (let i= 0; i<dataCast.cast.length; i++ ){
         appendcast(dataCast.cast[i].name,dataCast.cast[i].character );          
       }
+      let images = document.querySelectorAll('img');
+      for (let i=1; i<images.length; i++){
+        replaceEmptySrc(images[i]);
+      }
   })
   .catch(error=>{
       console.log("error: ", error )
@@ -85,3 +89,13 @@ function appendcast(cast,character){
   `;
   castdiv.appendChild(newDiv);
 }
+
+
+//--------------  Function to add null image -----------------------------
+function replaceEmptySrc(image) {
+  if (image.getAttribute('src') === 'https://image.tmdb.org/t/p/originalnull') {
+     image.src = './assets/not-available.png';
+     image.className= 'nullImage'
+  }
+}
+
