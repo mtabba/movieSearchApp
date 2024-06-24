@@ -8,16 +8,16 @@ let castData =[];
 
 if(data){
   appendHTML2( data.poster_path, data.title,data.vote_average,data.popularity,data.overview)
+  let images = document.querySelectorAll('img');
+  for (let i=0; i<images.length; i++){
+    replaceEmptySrc(images[0]);
+  }
   fetch(castUrl)
   .then(response => response.json())
   .then(dataCast => {
       // console.log(dataCast);
       for (let i= 0; i<dataCast.cast.length; i++ ){
         appendcast(dataCast.cast[i].name,dataCast.cast[i].character );          
-      }
-      let images = document.querySelectorAll('img');
-      for (let i=1; i<images.length; i++){
-        replaceEmptySrc(images[i]);
       }
   })
   .catch(error=>{
