@@ -75,7 +75,7 @@ body {
 .pg2-container{
     padding: 0 5vw;
     display: grid;
-    grid-gap: 5vw;
+    grid-gap: 8vw;
     grid-template-columns: repeat(auto-fill, minmax(186px, 1fr));
     margin: 10vh 0 10vh;
     .movieCard{
