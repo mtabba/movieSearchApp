@@ -65,7 +65,7 @@ document.getElementById("searchBtn").addEventListener('click', function() {
     })
     .catch(error => {
       console.log("error", error)
-      document.getElementById("appendHere").innerHTML="No Movie Found"
+      document.getElementById("appendHere").innerHTML="Something Went Wrong"
     })
 
   }
